@@ -23,8 +23,8 @@ public class Main{
 
             
             System.out.println("\n" + "Digite a opcao desejada:" + "\n");
-            System.out.println("1 - Adicionar respostas de alunos de uma disciplina");
-            System.out.println("2 - Gerar arquivos contendo gabarito dos alunos de uma disciplina");
+            System.out.println("1 - Adicionar respostas de alunos de uma disciplina e gabarito oficial");
+            System.out.println("2 - Gerar arquivos contendo notas dos alunos de uma disciplina");
             String opcao;
             do {
                 System.out.print("Opc: ");
@@ -35,11 +35,31 @@ public class Main{
                 File diretorio = new File("./");
                 File subdir1 = new File(diretorio, "RespostasDisciplinas");
                 subdir1.mkdir();
+                File subdir2 = new File(diretorio, "Gabaritos");
+                subdir2.mkdir();
                 System.out.print("\n" + "Digite o nome da disciplina a adicionar: ");
                 String nomeDisciplina = teclado.next();
-                File arquivo = new File(subdir1, nomeDisciplina + ".txt");
 
+                System.out.print("\n" + "Digite agora o gabarito oficial da disciplina:" );
+                String gabarito = teclado.next();
+
+                //Escreve os Gabaritos
                 try {
+                    File arquivo = new File(subdir2, nomeDisciplina + ".txt");
+                    FileWriter fw = new FileWriter(arquivo, true);
+                    BufferedWriter bw = new BufferedWriter(fw);
+
+                    bw.write(gabarito);
+                    bw.newLine();
+                    bw.close();
+                } catch ( IOException e) {
+                    System.out.println(e);
+                }
+
+                
+                //Escreve as respostas dos alunos
+                try {
+                    File arquivo = new File(subdir1, nomeDisciplina + ".txt");
                     FileWriter fw = new FileWriter(arquivo, true);
                     BufferedWriter bw = new BufferedWriter(fw);
 
@@ -62,9 +82,6 @@ public class Main{
                             System.out.print("\n" + "Digite agora o nome do aluno: ");
                             String nomeAluno = teclado.next();
 
-                            // testetsat7dssdiyasidsasipahdhipashpksadphksadphksdkphpsdsjpd
-                            System.out.println("O NOME DO ALUNO FOI : " + nomeAluno);
-
                             bw.write(respostas + "\t" + nomeAluno);
                             bw.newLine();
                             bw.flush();
@@ -79,8 +96,21 @@ public class Main{
                 }
 
             }  
+
             else if (opcao.equals("2")) {
-                //
+
+                String gabarito = "eba";
+                String resposta = "oba";
+                int nota = 0;
+
+
+                if(!(resposta.equals("VVVVVVVVVV") || resposta.equals("FFFFFFFFFF"))){
+                    for ( int i = 0; i < gabarito.length(); i++) {
+                        if (gabarito.charAt(i) == resposta.charAt(i)) {
+                            nota++;
+                        }
+                    }
+                }
             }
 
             
