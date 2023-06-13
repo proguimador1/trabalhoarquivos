@@ -141,12 +141,7 @@ public class Main{
                         }
 
                     }
-
-                    /*
-                        if(verify)
-                            continue;    
-                     */
-
+                    
                     if(verify)
                         break;                
 
