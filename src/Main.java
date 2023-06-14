@@ -142,11 +142,6 @@ public class Main{
 
                     }
 
-                    /*
-                        if(verify)
-                            continue;    
-                     */
-
                     if(verify)
                         break;                
 
@@ -197,7 +192,7 @@ public class Main{
 
                         fw.close();
 
-                        //System.out.println("\nLocalização do arquivo contendo gabarito:\n" + arquiv4.getAbsolutePath() + "\n");
+                        System.out.println("\nLocalização do arquivo contendo gabarito:\n" + arquiv4.getAbsolutePath() + "\n");
 
                         FileReader fr = new FileReader(arquivo);
 
